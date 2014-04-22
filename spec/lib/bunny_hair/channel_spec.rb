@@ -26,6 +26,12 @@ describe BunnyHair::Channel do
       queue = channel.queue('queue', options)
       expect(queue.options).to eq(options)
     end
+
+    it 'adds the queue to the array' do
+      queue = channel.queue('test.queue')
+      expect(channel.test_queues.size).to be(1)
+      expect(channel.test_queues).to include(queue)
+    end
   end
 
   describe '#topic' do

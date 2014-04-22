@@ -1,13 +1,16 @@
 module BunnyHair
   class Channel
-    attr_reader :connection
+    attr_reader :connection, :test_queues
 
     def initialize(connection=BunnyHair.new)
       @connection = connection
+      @test_queues = []
     end
 
     def queue(name, options={})
-      Queue.new(name, options)
+      Queue.new(name, options).tap do |queue|
+        @test_queues << queue
+      end
     end
 
     def topic(name, options={})
