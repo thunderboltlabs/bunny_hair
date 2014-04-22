@@ -15,11 +15,11 @@ module BunnyHair
     end
 
     def create_channel
-      Channel.new
+      Channel.new(self)
     end
 
     def default_channel
-      @channel ||= Channel.new
+      @channel ||= Channel.new(self)
     end
   end
 end
