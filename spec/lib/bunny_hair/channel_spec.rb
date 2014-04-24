@@ -32,6 +32,11 @@ describe BunnyHair::Channel do
       expect(channel.test_queues.size).to be(1)
       expect(channel.test_queues).to include(queue)
     end
+
+    it 'returns the same queue when you use the same name twice' do
+      queue = channel.queue('test.queue')
+      expect(channel.queue('test.queue')).to be(queue)
+    end
   end
 
   describe '#topic' do

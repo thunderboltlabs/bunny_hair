@@ -21,5 +21,9 @@ module BunnyHair
     def default_channel
       @channel ||= Channel.new(self)
     end
+
+    def reset_all!
+      @channel = nil
+    end
   end
 end

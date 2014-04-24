@@ -8,6 +8,10 @@ module BunnyHair
     end
 
     def queue(name, options={})
+      if queue = @test_queues.select {|q| q.name == name }[0]
+        return queue
+      end
+
       Queue.new(name, options).tap do |queue|
         @test_queues << queue
       end
