@@ -46,6 +46,11 @@ describe BunnyHair::Channel do
       expect(exchange.type).to be(:topic)
       expect(exchange).to be_durable
     end
+
+    it 'returns the same exchange object' do
+      exchange = channel.topic('my.topic.exchange', durable: true)
+      expect(channel.topic('my.topic.exchange')).to be(exchange)
+    end
   end
 
   describe '#fanout' do
